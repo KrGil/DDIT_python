@@ -1,5 +1,9 @@
 public class Animal {
-	int age = 1;
+	public int age = 1;
+	
+	public void getOlder() {
+		age++;
+	}
 	
 	
 }

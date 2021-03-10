@@ -6,7 +6,3 @@ def add_min_mul_div_mod(a, b):
 cal = add_min_mul_div_mod(1, 5)
 
 print(cal)
-
-
-
-
