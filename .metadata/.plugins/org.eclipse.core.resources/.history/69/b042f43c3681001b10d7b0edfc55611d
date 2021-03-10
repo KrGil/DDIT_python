@@ -6,7 +6,7 @@ print("끝수를 넣으세요")
 b = input()
 
 sum = 0
-for i in range(int(a), int(b)+1):
+for i in range(int(a), int(b)):
     sum += i
 
 print("a에서 b까지의 합을 구하세요")

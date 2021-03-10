@@ -1,0 +1,9 @@
+def add(a, b):
+    return a+b
+
+
+#minus, mul, div, mymod
+
+sum = add(1,5)
+print(sum)
+

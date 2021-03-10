@@ -17,11 +17,10 @@ else :
     res = 0
 
 if res == 1:
-    print("me = "+str(me_num))
-    print("com = " + str(com))
-    if me_num == com :
+    
+    if me == com :
         result = "비겼다"
-    elif (me_num == 0 and com == 1) or (me_num == 1 and com == 2) or (me_num == 2 and com == 0):
+    elif (me == 0 and com == 1) or (me == 1 and com == 2) or (me == 2 and com == 0):
         result = "졌다"
     else :
         result = "이겼다"
