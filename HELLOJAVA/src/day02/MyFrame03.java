@@ -7,20 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JTextField;
 
-
-// MyFrame02
-// JLabel -> 2 lbl
-// Jbutton -> btn increase
-// click event => lbl++
-public class MyFrame02 extends JFrame {
+public class MyFrame03 extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField tf;
+	private JTextField tf1;
+	private JTextField tf2;
+	private JTextField tf3;
 
 	/**
 	 * Launch the application.
@@ -29,7 +26,7 @@ public class MyFrame02 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyFrame02 frame = new MyFrame02();
+					MyFrame03 frame = new MyFrame03();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +38,7 @@ public class MyFrame02 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MyFrame02() {
+	public MyFrame03() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -49,33 +46,43 @@ public class MyFrame02 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl = new JLabel("1");
-		lbl.setBounds(88, 113, 57, 15);
+		JLabel lbl = new JLabel("+");
+		lbl.setBounds(81, 114, 57, 15);
 		contentPane.add(lbl);
 		
-		JButton btn = new JButton("Click");
-		tf = new JTextField();
-		tf.setText("2");
+		tf1 = new JTextField();
+		tf1.setText("1");
+		tf1.setBounds(12, 111, 57, 21);
+		contentPane.add(tf1);
+		tf1.setColumns(10);
 		
+		tf2 = new JTextField();
+		tf2.setText("2");
+		tf2.setBounds(91, 111, 57, 21);
+		contentPane.add(tf2);
+		tf2.setColumns(10);
+		
+		JButton btn = new JButton("=");
 		btn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String cnt = lbl.getText();
-				int int_cnt = Integer.parseInt(cnt);
-				int_cnt++;
-				lbl.setText(String.valueOf(int_cnt));
+				String a = tf1.getText();
+				String b = tf2.getText();
+				int int_a = Integer.parseInt(a);
+				int int_b = Integer.parseInt(b);
 				
-				String tf_btn = tf.getText();
-				int int_tf_btn = Integer.parseInt(tf_btn);
-				int_tf_btn++;
-				tf.setText(String.valueOf(int_tf_btn));
+				int int_c = int_a + int_b;
+				String c = String.valueOf(int_c);
+				
+				tf3.setText(c);
 			}
 		});
-		btn.setBounds(171, 109, 97, 23);
+		btn.setBounds(178, 110, 65, 23);
 		contentPane.add(btn);
 		
-		tf.setBounds(74, 149, 116, 21);
-		contentPane.add(tf);
-		tf.setColumns(10);
+		tf3 = new JTextField();
+		tf3.setBounds(255, 111, 116, 21);
+		contentPane.add(tf3);
+		tf3.setColumns(10);
 	}
 }

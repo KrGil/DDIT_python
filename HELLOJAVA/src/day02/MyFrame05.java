@@ -6,21 +6,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.PrintWriter;
 
-public class MyFrame01 extends JFrame {
+public class MyFrame05 extends JFrame {
 
 	private JPanel contentPane;
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyFrame01 frame = new MyFrame01();
+					MyFrame05 frame = new MyFrame05();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,9 +31,10 @@ public class MyFrame01 extends JFrame {
 		});
 	}
 
-
-	public MyFrame01() { //size 부분
-		 
+	/**
+	 * Create the frame.
+	 */
+	public MyFrame05() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -39,19 +42,20 @@ public class MyFrame01 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl = new JLabel("Good Morning");
-		lbl.setBounds(12, 10, 87, 15);
-		contentPane.add(lbl);
+		JButton btn = new JButton("hello");
+		btn.setBounds(254, 11, 97, 23);
+		contentPane.add(btn);
 		
-		JButton btn = new JButton("Click");
+		JTextArea ta = new JTextArea();
+		ta.setBounds(12, 10, 230, 241);
+		contentPane.add(ta);
 		btn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("hello");
-				lbl.setText("Good Evening");
+				String hello = "Hello";
+				ta.setText("hello\nhello\nhello\nhello\nhello\n");
+				
 			}
 		});
-		btn.setBounds(124, 6, 97, 23);
-		contentPane.add(btn);
 	}
 }
