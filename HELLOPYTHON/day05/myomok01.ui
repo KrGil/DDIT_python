@@ -53,27 +53,17 @@
      <string>reset</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_turn">
+   <widget class="QLabel" name="lbl">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>30</y>
-      <width>40</width>
-      <height>40</height>
+      <x>460</x>
+      <y>50</y>
+      <width>56</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>1.png</normaloff>1.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>40</width>
-      <height>40</height>
-     </size>
+     <string>0</string>
     </property>
    </widget>
   </widget>
