@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtGui, QtCore, QtWidgets
 from astropy.units import pb
 
-form_class = uic.loadUiType("myqt01_fiveEyes.ui")[0]
+form_class = uic.loadUiType("myqt01_fiveEyes19.ui")[0]
 
 class MyWindow(QMainWindow, form_class):
     def __init__(self):
@@ -11,25 +11,36 @@ class MyWindow(QMainWindow, form_class):
         self.setupUi(self)
         self.pb_reset.clicked.connect(self.resetButton)
         self.arr2D=[
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
                 
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
-                [0,0,0,0,0, 0,0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+                [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
             ]
         self.arr2pb = []
         self.flag_wb = True
         self.flag_ing = True
         
-        for i in range(0, 10):
+        for i in range(0, 19):
             line = []
-            for j in range(0, 10):#(0,1)(0,2) i는 y축 j는 x축을 표한다.
+            for j in range(0, 19):#(0,1)(0,2) i는 y축 j는 x축을 표한다.
                 pb = QPushButton(self)
                 pb.setIcon(QtGui.QIcon('0.png'))
                 pb.setIconSize(QtCore.QSize(40,40))
@@ -43,17 +54,17 @@ class MyWindow(QMainWindow, form_class):
         
     def resetButton(self):
         # 배열은 주소 
-        for i in range(10):
-            for j in range(10):
-                self.arr2d[i][j]=0
+        for i in range(0, 19):
+            for j in range(0, 19):
+                self.arr2D[i][j]=0
                 
         self.flag_ing = True
         self.flag_wb = True
         self.myrender()
         
     def myrender(self): #rendering 부터 그 다음 event를 작성한다.
-        for i in range(10):
-            for j in range(10):
+        for i in range(19):
+            for j in range(19):
                 if self.arr2D[i][j] == 0:
                     self.arr2pb[i][j].setIcon(QtGui.QIcon('0.png'))
                 elif self.arr2D[i][j] == 1:
