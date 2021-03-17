@@ -11,7 +11,12 @@ gil_db = pymysql.connect(
 )
 cursor = gil_db.cursor(pymysql.cursors.DictCursor)
 
-sql = "UPDATE sample SET col01 = 3, col03 = 3 WHERE col01 = 1;"
-        
-cursor.execute(sql)
+sql = """
+        UPDATE sample 
+        SET col02 = %s, col03 = %s 
+        WHERE col01 = %s
+        """
+cnt = cursor.execute(sql,('6','6','6'))
+print("cnt",cnt)
 gil_db.commit()
+gil_db.close()

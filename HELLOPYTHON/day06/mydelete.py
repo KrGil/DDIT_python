@@ -1,6 +1,5 @@
-# 불러오기
+# 삭제하기
 import pymysql
-import pandas as pd
 
 gil_db = pymysql.connect(
     user='root', 
@@ -11,9 +10,11 @@ gil_db = pymysql.connect(
 )
 cursor = gil_db.cursor(pymysql.cursors.DictCursor)
 
-sql = "INSERT INTO sample (col01, col02, col03) VALUES (%s, %s, %s)"
-cnt = cursor.execute(sql,('6','6','4'))
+sql = """
+        DELETE FROM sample 
+        WHERE col01=%s 
+        """
+cnt = cursor.execute(sql,('6'))
+print("cnt",cnt)
 gil_db.commit()
 gil_db.close()
-print("cnt", cnt)
-
