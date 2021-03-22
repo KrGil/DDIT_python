@@ -54,30 +54,3 @@ for i in range(10) :
     time.sleep(60)
 
 gil_db.close()
-
-# yyyymmdd:HHMM 24시간표시
-# %Y-%m-%d %H:%M
-# for item in items:
-    # temp = []
-    # name = item.select_one(".tbody > dt > a")["title"]
-    # price = item.select_one(".tbody dd span:first-child")
-    # price_1 = price.text
-    # code = item.select_one(".tbody dd")["id"]
-    # code_1 = code[code.rindex("_")+1:]
-    # temp.append(name)
-    # temp.append(price_1)
-    # temp.append(code_1)
-    #
-    # c_list.append(temp)
-    #
-# with open('c_list.csv', "w", encoding="utf-8", newline="") as f:
-    # writer = csv.writer(f)
-    # writer.writerow(["주식이름", "가격", "코드"])
-    # writer.writerow(c_list)
-# f.close
-#
-# f = open('c_list.csv', 'r', encoding="utf-8", newline="" )
-# rdr = csv.reader(f)
-# for line in rdr:
-    # print(line)
-# f.close
