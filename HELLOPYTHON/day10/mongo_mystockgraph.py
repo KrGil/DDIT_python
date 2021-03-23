@@ -8,13 +8,10 @@ import pymongo
 
 
 def getPrices(s_name):    
-        
     connection = pymongo.MongoClient("mongodb://localhost")
-
     db = connection.python
     
     stock = db.stock
-    
     rows = stock.find({"s_name" : s_name})
     
     first_price = rows[0]['s_price']
@@ -35,14 +32,14 @@ fig = plt.figure()                                # 이건 꼭 입력해야한�
 ax = fig.gca(projection='3d')
 
 zs = []
-x = np.zeros(10) #종류
-y = range(10) #시간 고정
 
 # DB에서 값 가져와서 넣기
 zs.append(getPrices("삼성전자"))
 zs.append(getPrices("LG"))
 zs.append(getPrices("SK"))
 
+x = np.zeros(len(zs[0])) #종류
+y = range(len(zs[0])) #시간 고정
 
 ax.plot(x+0, y, zs[0], label='samsung')        # 위에서 정의한 x,y,z 가지고 그래프그린거다.
 ax.plot(x+1, y, zs[1], label='lg')        # 위에서 정의한 x,y,z 가지고 그래프그린거다.
