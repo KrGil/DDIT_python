@@ -12,9 +12,9 @@ if __name__ == "__main__":
     ## 4 params(to, from, type, text) are mandatory. must be filled
     params = dict()
     params['type'] = 'sms' # Message type ( sms, lms, mms, ata )
-    params['to'] = '01097192470' # Recipients Number '01000000000,01000000001'
+    params['to'] = '01068287610' # Recipients Number '01000000000,01000000001'
     params['from'] = '01085544580' # Sender number
-    params['text'] = 'python문자 가는지 테스트하기' # Message
+    params['text'] = "'<'" # Message
     cool = Message(api_key, api_secret)
     try:
         response = cool.send(params)

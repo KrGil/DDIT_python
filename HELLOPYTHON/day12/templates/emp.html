@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원관리</title>
+</head>
+<body>
+	<table border="1">
+	<tr>
+		<th>
+			<table border="1">
+				<tr>
+					<th>사번</th>
+					<th>이름</th>
+					<th>부서</th>
+					<th>폰번</th>
+				</tr>
+			{% for e in list %}
+				<tr>
+					<td>
+						<a href = "javascript:fn_detail('{{e.sabun}}','{{e.e_name}}','{{e.dept}}','{{e.mobile}}')">{{e.sabun}}</a>
+					</td>
+					<td>{{e.e_name}}</td>
+					<td>{{e.dept}}</td>
+					<td>{{e.mobile}}</td>
+				</tr>
+			{% endfor %}
+			</table>
+		</form>
+		</th>
+		<th>
+			<table>
+				<tr>
+					<td>사번</td>
+					<td><input type= "text" id="sabun"/></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type= "text" id="e_name"/></td>
+				</tr>
+				<tr>
+					<td>부서</td>
+					<td><input type= "text" id="dept"/></td>
+				</tr>
+				<tr>
+					<td>전번</td>
+					<td><input type= "text" id="mobile"/></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type = 'button' onclick="fn_add()" value="추가"/>
+						<input type = 'button' onclick="fn_mod()" value="수정"/>
+						<input type = 'button' onclick="fn_del()" value="삭제"/>
+					</td>
+				</tr>
+			</table>		
+		</th>
+	</tr>
+	</table>
+<script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	url = function(url){
+
+		var sabun = $("#sabun").val();
+		var e_name = $("#e_name").val();
+		var dept = $("#dept").val();
+		var mobile = $("#mobile").val();
+		
+		var param = {
+		   	'sabun': sabun,
+		   	'e_name': e_name,
+		   	'dept': dept,
+		   	'mobile': mobile
+	    }
+		$.ajax({
+			type: 'POST',
+		    url: url,
+		    data: JSON.stringify(param),
+		    dataType : 'JSON',
+		    contentType: "application/json",
+		    success: function(data){
+		    	if(data.result=="success"){
+		    		location.reload()
+		    	}
+		    },
+		    error: function(request, status, error){
+		    	console.log(error);
+		    }
+		})
+	}
+	function fn_add(){
+		url('ins.ajax')
+	}	
+	function fn_mod(){
+		url('upd.ajax')
+	}	
+	function fn_del(){
+		url('del.ajax')
+	}	
+	function fn_detail(sabun, e_name, dept, mobile){
+		$("#sabun").val(sabun);
+		$("#e_name").val(e_name);
+		$("#dept").val(dept);
+		$("#mobile").val(mobile);
+	}
+	
+</script>
+</body>
+</html>
