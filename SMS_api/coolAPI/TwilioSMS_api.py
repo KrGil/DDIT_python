@@ -9,7 +9,7 @@ auth_token = os.environ['7c36300e800db54968b1040cfa19cc22']
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
-                              body='eng',
+                              body='테스트 문자 서비스',
                               from_='+15512240680',
                               to='+8201039350724'
                           )
