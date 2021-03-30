@@ -1,4 +1,5 @@
 import cv2
+
 image = cv2.imread("image/IU.jpg", cv2.IMREAD_ANYCOLOR)
 image_wb = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 

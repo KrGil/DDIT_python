@@ -13,13 +13,13 @@ print(train_images[1])
 # print(train_labels[1])
 arr2D = train_images[1]
 
-# for i in arr2D :
-    # print()
-    # for j in i :
-        # if j == 0:
-            # print("0", end="")
-        # else : 
-            # print("1", end = "")
+for i in arr2D :
+    print()
+    for j in i :
+        if j == 0:
+            print("0", end="")
+        else : 
+            print("1", end = "")
 # print(len(test_images))
 # print(len(test_labels))
 
