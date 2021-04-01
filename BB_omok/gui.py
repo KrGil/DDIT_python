@@ -54,13 +54,9 @@ for y in range(h):
 
             # cpu turn
             input = game.board.board.copy()
-            print("input : ")
-            print(input)
             input[(input != 1) & (input != 0)] = -1
             input[(input == 1) & (input != 0)] = 1
             input = np.expand_dims(input, axis=(0, -1)).astype(np.float32)
-            print("after : ")
-            print(input)
 
             output = model.predict(input).squeeze()
             output = output.reshape((h, w))

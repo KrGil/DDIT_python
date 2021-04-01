@@ -1,22 +1,52 @@
-from ursina import *
 import numpy as np
 from tensorflow.keras.models import load_model
-from gomoku import Board, Gomoku
-from conda.common._logic import FALSE
 
 model = load_model('models/20201213_202430.h5')
 
-w, h = 20, 20
-board = Board(w=w, h=h)
-game = Gomoku(board=board)
+arr=[
+            [1,-1,1,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+        ]
 
-# cpu turn
-input = game.board.board.copy()
-input[(input != 1) & (input != 0)] = -1
-input[(input == 1) & (input != 0)] = 1
-input = np.expand_dims(input, axis=(0, -1)).astype(np.float32)
+def getIJFromNeuro(arr) :
+    # 새로운 배열 만들기. reference값을 건드리기에 좀 그렇다.
+    arr_n = np.zeros((20, 20))
+    
+    for i in range(20):
+        for j in range(20):
+            if arr[i][j] == 1:
+                arr_n[i][j] =1
+            if arr[i][j] == 2:
+                arr_n[i][j] = -1
+    
+    arr_n = np.array(arr)
+    arr_n = np.reshape(arr_n(1,20,20,1))
+    output = model.predict(arr_n).squeeze()
+    output = output.reshape((20, 20))
+    i, j = np.unravel_index(np.argmax(output), output.shape)
+    return i, j
 
-output = model.predict(input).squeeze()
-output = output.reshape((20, 20))
-output_y, output_x = np.unravel_index(np.argmax(output), output.shape)
 
+if __name__ == '__main__':
+    com_i, com_j = getIJFromNeuro(arr)
+    print(com_i, com_j)

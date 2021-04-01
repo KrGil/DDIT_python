@@ -21,7 +21,7 @@ class MyWindow(QMainWindow, form_class):
                     ]
         self.seq = 0
         
-        self.arr2D = np.zeros()
+        self.arr2D = np.zeros((20, 20))
         
         self.arr2pb = []
         self.flag_wb = True
@@ -155,7 +155,7 @@ class MyWindow(QMainWindow, form_class):
         d3 = ur + dl + 1
         d4 = dr + ul + 1
         
-    
+        self.flag_wb = not self.flag_wb
     
     def getUp(self, i, j, int_wb):
         cnt = 0
@@ -191,6 +191,8 @@ class MyWindow(QMainWindow, form_class):
                 j += 1
                 if i < 0 or j < 0:
                     return cnt
+                if j == 19 :
+                    return cnt    
                 if self.arr2D[i][j] == int_wb :
                     cnt += 1
                 else :
@@ -219,6 +221,8 @@ class MyWindow(QMainWindow, form_class):
                 i -= 1
                 if i < 0 or j < 0:
                     return cnt
+                if j == 19 :
+                    return cnt    
                 if self.arr2D[i][j] == int_wb :
                     cnt += 1
                 else :
@@ -248,6 +252,8 @@ class MyWindow(QMainWindow, form_class):
                 i += 1
                 if i < 0 or j < 0:
                     return cnt
+                if j == 19 :
+                    return cnt    
                 if self.arr2D[i][j] == int_wb :
                     cnt += 1
                 else :

@@ -6,8 +6,8 @@ from tqdm import tqdm
 '''
 Dataset from https://gomocup.org/results/
 '''
-game_rule = 'Freestyle' # Freestyle, Fastgame, Standard, Renju
-base_path = r'C:\Users\PC-11\Desktop'
+game_rule = 'Freestyle1' # Freestyle, Fastgame, Standard, Renju
+base_path = 'D:/workspace_python/BB_omok/gomocup2020result'
 output_path = os.path.join('dataset', os.path.basename(base_path))
 os.makedirs(output_path, exist_ok=True)
 
